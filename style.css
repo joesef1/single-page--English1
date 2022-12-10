@@ -1,0 +1,855 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+/*general styling*/
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+h2,
+h3 {
+    color: rgb(41, 41, 41);
+    font-weight: 600;
+}
+
+p,
+span,
+small {
+    color: gray;
+    font-size: 15px;
+}
+
+.displayNone {
+    display: none;
+}
+
+.displayBlock {
+    display: block;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #d3d5e4;
+    height: 100vh;
+    text-transform: capitalize;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* notifications section */
+.updates {
+    cursor: pointer;
+}
+
+.updates i {
+    transform: translateY(7px);
+    font-size: 24px;
+}
+
+.notifications-section {
+    display: none;
+    position: relative;
+}
+
+.notification {
+    transform: translateY(-20px);
+}
+
+.notifications-section .notification {
+    padding: 10px 0px 20px 55px;
+    position: relative;
+}
+
+.notifications-section .notification .icon {
+    font-size: 30px;
+    position: absolute;
+    left: 0px;
+    top: 11px;
+    background-color: #c9cde0;
+    width: 43px;
+    height: 45px;
+    border-radius: 10px;
+}
+
+
+.ico {
+    color: #6d8dc9;
+    transform: translate(23%, 15%);
+}
+
+
+.notifications-section .notification .popup-title {
+    font-size: 14px;
+    font-weight: 600;
+    width: 89%;
+    color: rgb(27, 27, 27);
+}
+
+.notifications-section .notification .popup-disc {
+    font-size: 13px;
+    color: #c0bfbf;
+    margin-top: 10px;
+    width: 80%;
+}
+
+.notifications-section span {
+    height: 5px;
+    width: 80%;
+    color: #2759b4;
+}
+
+.notifications-section .all {
+    color: #2759b4;
+    font-size: 15px;
+    text-decoration: none;
+    font-weight: 600;
+    width: 90%;
+    margin-top: 20px;
+    bottom: -320px;
+    display: flex;
+    justify-content: center;
+}
+
+.notifications-section hr {
+    border: 1px solid #c0bfbf;
+    width: 90%;
+    margin-right: 2%;
+    margin-bottom: 10px;
+    transform: translateY(-20px);
+}
+
+/* nav links */
+.nav {
+    position: absolute;
+    padding: 17px;
+    width: 70%;
+    height: 60%;
+    margin-top: 10px;
+    display: none;
+    z-index: -1;
+}
+
+.toggle-dispay {
+    display: block;
+}
+
+.nav ul li {
+    list-style: none;
+    margin-bottom: 40px;
+}
+
+.nav ul .transparent a {
+    color: #a2a7ad;
+}
+
+.nav ul .transparent i {
+    color: #6d8dc9;
+}
+
+.nav ul li i {
+    margin-right: 20px;
+    color: #2759b4;
+    transform: translateY(5px);
+    font-size: 20px;
+}
+
+.nav ul a {
+    text-decoration: none;
+    color: rgb(37, 37, 37);
+    font-weight: 500;
+}
+
+.zindex-toggle {
+    z-index: 0;
+}
+
+.zindex1-toggle {
+    z-index: 10;
+}
+
+.zindex2-toggle {
+    z-index: 999;
+}
+
+.display {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+/*top section*/
+.top-section {
+    background-color: #dee0eb;
+    background-color: #d3d5e4;
+    padding: 25px 0 16px 0;
+}
+
+.top-section {
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+}
+
+.top-section .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 42px;
+    background-color: #dee0eb;
+    background-color: #d3d5e4;
+}
+
+.top-section .header .menu-bar {
+    width: 25px;
+    height: 27px;
+    position: relative;
+    cursor: pointer;
+}
+
+.top-section .header .menu-bar span {
+    border-radius: 5px;
+}
+
+.top-section .header .menu-bar .top-left {
+    width: 50%;
+    height: 3px;
+    background-color: #424242;
+    position: absolute;
+    transform-origin: left;
+    transition: transform 0.5s;
+}
+
+.fist-line {
+    transform: rotate(45deg) translateX(4px);
+}
+
+.second-line {
+    transform: rotate(-45deg);
+}
+
+.third-line {
+    transform: rotate(43deg) translateX(-5px);
+}
+
+.top-section .header .menu-bar .middel {
+    width: 100%;
+    height: 3px;
+    background-color: #424242;
+    position: absolute;
+    top: 45%;
+    transform-origin: center;
+    transition: transform 0.5s;
+}
+
+.top-section .header .menu-bar .bottom-right {
+    width: 50%;
+    height: 3px;
+    background-color: #424242;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform-origin: right;
+    transition: transform 0.5s;
+}
+
+.top-section .my-circles {
+    margin: 5px 0;
+}
+
+/* main section */
+.main-section {
+    background-color: #e9e9f1;
+    width: 100%;
+    height: 70vh;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    transition: all 0.3s ease-in-out;
+    padding-bottom: 810px;
+    position: relative;
+    transform: translateY(130px);
+}
+
+.main-section .layer {
+    background-color: rgba(255, 255, 255, 0.5);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: all 0.5s ease-in-out;
+    display: none;
+    z-index: 3;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.translateY {
+    transform: translateY(620px);
+}
+
+.translateY_noti {
+    transform: translateY(600px);
+}
+
+
+
+.moneyimg {
+    transform: translate(0, 4px);
+}
+
+.calenderimg {
+    transform: translate(0, 1px);
+}
+
+.credit-card {
+    transform: translate(0, 4px);
+}
+
+.dollar {
+    transform: translate(-4px, 3px);
+    background-color: #e7e6e6;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+/* new */
+.main-section .switch-button {
+    width: 220px;
+    height: 45px;
+    margin: 0 auto;
+    border-radius: 13px;
+    background-color: #d1d7e7;
+    display: flex;
+    align-items: center;
+    position: relative;
+    transform: translateY(24px);
+    cursor: pointer;
+}
+
+.main-section .switch-button span {
+    text-transform: capitalize;
+}
+
+.main-section .switch-button .active {
+    border-radius: 7px;
+    left: 34px;
+    position: absolute;
+}
+
+.main-section .switch-button .finished {
+    right: 21px;
+    position: absolute;
+}
+
+.main-section .switch-button .switch {
+    height: 37px;
+    width: 100px;
+    border-radius: 9px;
+    position: absolute;
+    left: 7px;
+    background-color: #e8eaea;
+    transition: transform 0.2s ease-in-out;
+    box-shadow: 0px 0px 5px 2px #9ea6d4;
+}
+
+.main-section .switch-button span {
+    color: #000;
+    font-weight: 500;
+}
+
+.active-switch {
+    transform: translateX(110px);
+}
+
+
+/*card-section*/
+/* first-card-section*/
+.card-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 45px;
+}
+
+
+.card-section .first-card,
+.card-section .secontcard-card {
+    margin-bottom: 15px;
+    width: 100%;
+    height: 215px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px 2px rgb(223, 223, 223);
+}
+
+.card-section i {
+    color: #3958c0;
+    color: #7182e6;
+    padding-right: 5px;
+}
+
+.card {
+    background-color: #efeff3;
+    padding: 10px 15px;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 11px;
+}
+
+/*second-section*/
+.card .second-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.card .second-section span {
+    width: 1px;
+    height: 30px;
+    background-color: #8390e4;
+    margin-top: 12px;
+}
+
+/*third-section*/
+.card .third-section {
+    background-color: #e4e7ec;
+    border-radius: 10px;
+    padding: 0 0 5px 0;
+    margin-bottom: 2px;
+}
+
+/* progress line */
+.progress-line .child {
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 9px;
+    background-color: #4d60d5;
+    left: 0;
+    position: absolute;
+    border-radius: 5px;
+    top: -50%;
+}
+
+.progress-line {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 5px;
+    background-color: #d3d7e7;
+    margin-bottom: 8px;
+    margin-top: 11px;
+    position: relative;
+    border-radius: 7px;
+}
+
+.bar .progress-line span {
+    height: 100%;
+    position: absolute;
+    border-radius: 10px;
+    transform: scaleX(0);
+    transform-origin: left;
+    background: #3958c0;
+    animation: animate 0.1s 0.1s cubic-bezier(1, 0, 0.5, 1) forwards;
+}
+
+.bar .progress-line.html span {
+    width: 30%;
+}
+
+.third-section .date-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 95%;
+    margin: 0 auto;
+}
+
+/* secont-card-section*/
+.third-section p {
+    padding: 8px 10px;
+    color: #363636;
+    font-size: 10px;
+}
+
+.card-section .secontcard-card {
+    height: 205px;
+}
+
+.secontcard-card .third-section i {
+    padding-top: 3px;
+    color: #646464;
+    font-size: 16px;
+}
+
+.secontcard-card .third-section .text {
+    padding-top: 10px;
+    color: #555555;
+    font-size: 15px;
+}
+
+.secontcard-card .third-section {
+    background-color: #dfdbe8;
+    height: 40px;
+    margin-top: 7px;
+}
+
+.secontcard-card .third-section p {
+    font-weight: 500;
+    font-size: 13px;
+    margin-top: 2px;
+}
+
+.secontcard-card .third-section i {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+
+/* join-circle */
+.join-circle {
+    transform: translateY(-80px);
+    cursor: pointer;
+}
+
+.join-circle i {
+    padding-right: 2px;
+}
+
+.join-container {
+    width: 90%;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 0;
+    transform: translateY(80px);
+}
+
+.join-text {
+    border-radius: 30px;
+    background-color: #e8ca0c;
+    display: inline-block;
+    padding: 12px 13px;
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.join-circle-stylejs {
+    transform: translateY(107px);
+}
+
+/* pop up  */
+.pop-up {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    transform: translateY(100%);
+    transition: all 0.4s;
+    z-index: 199;
+}
+
+.pop-up-layout {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 98;
+    position: absolute;
+    display: none;
+    transition: all 2s;
+}
+
+.active-pop-up {
+    transform: translateY(0);
+}
+
+.pop-up-section {
+    width: 100%;
+    height: 45vh;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0%;
+    background-color: #e3e4e8;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 25px;
+}
+
+.popup-card-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-card-section .popup-card {
+    background-color: rgb(240, 240, 240);
+    width: 100%;
+    height: 120px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px 2px rgb(223, 223, 223);
+    margin-top: 18px;
+    padding: 20px 20px 30px 70px;
+    position: relative;
+    cursor: pointer;
+}
+
+.popup-card-section .popup-card p {
+    width: 80%;
+    color: #777777;
+}
+
+.popup-card-section .popup-card img {
+    position: absolute;
+    left: 10px;
+    top: 35px;
+}
+
+
+.popup-card-section .popup-card p span {
+
+    color: #7a2baf;
+}
+
+.pop-up-section span i {
+    position: absolute;
+    font-size: 30px;
+    color: #060e31;
+    top: 25px;
+    right: 25px;
+}
+
+.popup-card-section .popup-card .arrow {
+    color: #406ec4;
+    font-size: 23px;
+    position: absolute;
+    right: 30px;
+    top: 50px;
+}
+
+.popup-card-section .popup-card .icon {
+    color: #406ec4;
+    font-size: 23px;
+    position: absolute;
+    left: 25px;
+    top: 50px;
+}
+
+/* end of pop up  */
+p {
+    color: #777777;
+}
+
+/* notifications-section */
+.notifications-section {
+    margin-top: 30px;
+    width: 100%;
+    height: 100%;
+}
+
+@media (min-width: 820px) and (max-width: 820px) {}
+
+
+.first-card .third-section.switched {
+    background-color: #e9e7cd;
+    height: 40px;
+    border-radius: 7px;
+    margin-top: 15px;
+}
+
+.secontcard-card .third-section.switched {
+    background-color: #e9e7cd;
+    height: 40px;
+    border-radius: 7px;
+    margin-top: 5px;
+}
+
+.third-section.switched i {
+    color: #363636;
+    font-size: 19px;
+    transform: translateY(2px);
+    font-weight: 600;
+}
+
+.secontcard-card .third-section.switched p {
+    font-size: 13px;
+    /* font-weight: 400; */
+    line-height: 1px;
+    margin-bottom: 16px;
+    transform: translateY(-5px);
+}
+
+.card p {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+@media (min-width: 412px) {
+
+
+    .join-container {
+        height: 0;
+        transform: translateY(160px);
+    }
+
+    .join-text {
+        border-radius: 30px;
+        background-color: rgb(235, 201, 12);
+        display: inline-block;
+        padding: 13px 20px;
+        position: absolute;
+        right: 0;
+        bottom: 20px;
+        font-weight: bold;
+    }
+
+}
+
+@media (max-width: 412px) {
+    .secontcard-card .third-section.switched p {
+        font-size: 13px;
+    }
+
+    .secontcard-card .third-section .text {
+        padding-right: 10px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 375px) {
+    .pop-up-section {
+        height: 60vh;
+    }
+
+    .secontcard-card .third-section p {
+        font-weight: 500;
+        font-size: 12px;
+        margin-top: 2px;
+    }
+}
+
+
+
+
+
+
+
+@media (max-width: 360px) {
+    .card p {
+        font-size: 12px;
+        width: 100%;
+    }
+
+    .secontcard-card .third-section.switched p {
+        font-size: 12px;
+    }
+
+    .secontcard-card .third-section .text {
+        padding-top: 10px;
+        font-size: 13px;
+    }
+
+}
+
+@media (min-width: 500px) {
+    .popup-container {
+        height: 10px;
+        position: absolute;
+    }
+}
+
+@media (max-height: 800px) {
+    .pop-up-section {
+        height: 55vh;
+    }
+}
+
+@media (max-height: 600px) {
+    .pop-up-section {
+        height: 65vh;
+    }
+}
+
+@media (min-height: 940px) {
+    .main-section {
+        height: 90vh;
+        padding-bottom: 810px;
+    }
+
+    .pop-up-section {
+        height: 40vh;
+    }
+}
+
+
+@media (max-width: 281px) {
+    .pop-up-section {
+        height: 60vh;
+    }
+
+
+
+    p,
+    span,
+    small {
+        font-size: 12px;
+    }
+
+    .main-section h2,
+    .main-section h3 {
+        font-size: 13px;
+    }
+
+    .arrow {
+        transform: translateX(15px);
+    }
+
+    .all {
+        transform: translateY(-46px);
+    }
+
+    .card .switched p,
+    .card .p_third {
+        font-size: 9px;
+    }
+
+    .card .third-section .second {
+        font-size: 8px;
+    }
+
+    .card .third-section p.p_third {
+        font-size: 9px;
+    }
+
+    .finished {
+        transform: translateX(-8px);
+    }
+}
+
+i {
+    cursor: pointer;
+}
+
+.my-circles{
+    font-size: 22px;
+}
