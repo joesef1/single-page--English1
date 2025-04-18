@@ -266,7 +266,7 @@
       text-decoration: none;
     }
 
-    button {
+    .view-more-btn {
       border-radius: 5px;
       border: 1px solid #ff4b2b;
       background-color: #ff4b2b;
@@ -275,6 +275,7 @@
       padding: 5px 10px;
       letter-spacing: 1px;
       transition: transform 80ms ease-in;
+      font-weight: normal !important;
     }
     .error {
       color: red;
@@ -499,46 +500,44 @@
 
       <!-- card section -->
       <div class="card-section">
-        <form id="frmMedicalRecords">
+        <form id="frmMedicalRecords" runat="server">
           <div class="record-container">
-            <!-- Hidden by default; show via JS if needed -->
-            <div
-              id="lblNoData"
-              class="text-danger"
-              style="
-                text-align: center;
-                display: none;
-                margin-bottom: 20px;
-                font-weight: bold;
-              "
-            >
-              No records associated with this patient.
-            </div>
+            <asp:Label
+              ID="lblNoData"
+              runat="server"
+              Text="No records associated with this patient."
+              CssClass="text-danger"
+              Visible="false"
+              Style="display: none; margin: 10px 0;"
+            />
 
-            <!-- Loop through records here -->
-            <!-- Example using pseudo-templating syntax like in Handlebars or server-side rendering -->
-            <!-- Repeat this block per record -->
-            <div class="record-card">
-              <div>
-                <span class="label">Patient name:</span>
-                <span class="value">{{PatientName}}</span>
-              </div>
-              <div>
-                <span class="label">Organization:</span>
-                <span class="value">{{OrganizationName}}</span>
-              </div>
-              <div>
-                <span class="label">Created at:</span>
-                <span class="value">{{DateCreated}}</span>
-                <!-- Format server-side or with JS -->
-              </div>
-              <div class="view-more-btn-wrapper">
-                <button type="submit" class="view-more-btn">
-                  <a href="MedicalRecord.aspx?q1={{Id}}">View More</a>
-                </button>
-              </div>
-            </div>
-            <!-- End Repeat -->
+            <asp:Repeater ID="rptRecords" runat="server">
+              <ItemTemplate>
+                <div class="record-card">
+                  <div>
+                    <span class="label">Patient name:</span>
+                    <span class="value"><%# Eval("PatientName") %></span>
+                  </div>
+                  <div>
+                    <span class="label">Organization:</span>
+                    <span class="value"><%# Eval("OrganizationName") %></span>
+                  </div>
+                  <div>
+                    <span class="label">Created at:</span>
+                    <span class="value"
+                      ><%# Eval("DateCreated", "{0:yyyy-MM-dd HH:mm}") %></span
+                    >
+                  </div>
+                  <div class="view-more-btn-wrapper">
+                    <a
+                      href='<%# "MedicalRecord.aspx?q1=" + Eval("Id") %>'
+                      class="view-more-btn"
+                      >View More</a
+                    >
+                  </div>
+                </div>
+              </ItemTemplate>
+            </asp:Repeater>
           </div>
         </form>
       </div>
