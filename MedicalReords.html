@@ -305,7 +305,6 @@
       flex-direction: column;
       padding: 0 20px 20px 20px;
       width: 100%;
-      text-align: center;
       border-radius: 8px;
       margin: 12px;
     }
@@ -514,7 +513,7 @@
             <!-- Repeat this block per record -->
             <div class="record-card">
               <div>
-                <span class="label">Patient:</span>
+                <span class="label">Patient name:</span>
                 <span class="value">{{PatientName}}</span>
               </div>
               <div>
@@ -522,11 +521,11 @@
                 <span class="value">{{OrganizationName}}</span>
               </div>
               <div>
-                <span class="label">Created:</span>
+                <span class="label">Created at:</span>
                 <span class="value">{{DateCreated}}</span>
                 <!-- Format server-side or with JS -->
               </div>
-              <a href="MedicalRecord.aspx?q1={{Id}}">📄 View Record</a>
+              <a href="MedicalRecord.aspx?q1={{Id}}">📄 View More</a>
             </div>
             <!-- End Repeat -->
           </div>
