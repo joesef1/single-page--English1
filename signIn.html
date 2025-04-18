@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head runat="server">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign in</title>
+    <script src="https://unpkg.com/phosphor-icons"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+  </head>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+    /*general styling*/
+    *,
+    *::before,
+    *::after {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    h2,
+    h3 {
+      color: rgb(41, 41, 41);
+      font-weight: 600;
+    }
+    i {
+      cursor: pointer;
+    }
+    p,
+    span,
+    small {
+      color: gray;
+      font-size: 15px;
+    }
+
+    .displayNone {
+      display: none;
+    }
+
+    .displayBlock {
+      display: block;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #d3d5e4;
+      text-transform: capitalize;
+    }
+
+    .container {
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    /* nav links */
+    .nav {
+      position: absolute;
+      padding: 17px;
+      width: 70%;
+      height: 60%;
+      margin-top: 10px;
+      display: none;
+      z-index: -1;
+    }
+
+    .toggle-dispay {
+      display: block;
+    }
+
+    .nav ul li {
+      list-style: none;
+      margin-bottom: 40px;
+    }
+
+    .nav ul .transparent a {
+      color: #a2a7ad;
+    }
+
+    .nav ul .transparent i {
+      color: #ff2323;
+    }
+
+    .nav ul li i {
+      margin-right: 20px;
+      color: #ff2323;
+      transform: translateY(5px);
+      font-size: 20px;
+    }
+
+    .nav ul a {
+      text-decoration: none;
+      color: rgb(37, 37, 37);
+      font-weight: 500;
+    }
+
+    .zindex-toggle {
+      z-index: 0;
+    }
+
+    .zindex1-toggle {
+      z-index: 10;
+    }
+
+    .zindex2-toggle {
+      z-index: 999;
+    }
+
+    /*top section*/
+    .top-section {
+      background-color: #dee0eb;
+      background-color: #d3d5e4;
+      padding: 25px 0 16px 0;
+    }
+
+    .top-section {
+      position: fixed;
+      z-index: 10;
+      width: 100%;
+    }
+
+    .top-section .header {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      align-items: center;
+      height: 42px;
+      background-color: #dee0eb;
+      background-color: #d3d5e4;
+    }
+
+    .top-section .header .menu-bar {
+      width: 25px;
+      height: 27px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .top-section .header .menu-bar span {
+      border-radius: 5px;
+    }
+
+    .top-section .header .menu-bar .top-left {
+      width: 50%;
+      height: 3px;
+      background-color: #424242;
+      position: absolute;
+      transform-origin: left;
+      transition: transform 0.5s;
+    }
+
+    .fist-line {
+      transform: rotate(45deg) translateX(4px);
+    }
+
+    .second-line {
+      transform: rotate(-45deg);
+    }
+
+    .third-line {
+      transform: rotate(43deg) translateX(-5px);
+    }
+
+    .top-section .header .menu-bar .middel {
+      width: 100%;
+      height: 3px;
+      background-color: #424242;
+      position: absolute;
+      top: 45%;
+      transform-origin: center;
+      transition: transform 0.5s;
+    }
+
+    .top-section .header .menu-bar .bottom-right {
+      width: 50%;
+      height: 3px;
+      background-color: #424242;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      transform-origin: right;
+      transition: transform 0.5s;
+    }
+
+    .top-section .my-circles {
+      margin: 5px 0;
+    }
+
+    /* main section */
+    .main-section {
+      background-color: #e9e9f1;
+      width: 100%;
+      height: 90vh;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      transition: all 0.3s ease-in-out;
+      position: relative;
+      transform: translateY(90px);
+      z-index: 9999;
+    }
+    .translateY {
+      transform: translateY(620px);
+    }
+    /*card-section*/
+    /* first-card-section*/
+    .card-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-top: 20px;
+    }
+
+    @media (max-width: 360px) {
+      .card p {
+        font-size: 12px;
+        width: 100%;
+      }
+    }
+
+    @media (min-height: 940px) {
+      .main-section {
+        height: 80vh;
+        padding-bottom: 810px;
+      }
+    }
+    /* login */
+    @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
+
+    body {
+      background: #f6f5f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: "Montserrat", sans-serif;
+      height: 100vh;
+    }
+
+    h1 {
+      font-weight: bold;
+      margin: 0;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    p {
+      font-size: 14px;
+      font-weight: 100;
+      line-height: 20px;
+      letter-spacing: 0.5px;
+      margin: 20px 0 30px;
+    }
+
+    span {
+      font-size: 12px;
+    }
+
+    a {
+      color: #333;
+      font-size: 14px;
+      text-decoration: none;
+      margin: 15px 0;
+    }
+
+    button {
+      border-radius: 20px;
+      border: 1px solid #ff4b2b;
+      background-color: #ff4b2b;
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 12px 45px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: transform 80ms ease-in;
+    }
+    .error {
+      color: red;
+    }
+    .signin-btn {
+      margin: 15px 0;
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    button:focus {
+      outline: none;
+    }
+
+    button.ghost {
+      background-color: transparent;
+      border-color: #ffffff;
+    }
+    form {
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 44px 20px;
+      width: 88%;
+      text-align: center;
+      border-radius: 8px;
+      margin-top: 12px;
+    }
+
+    form h1 {
+      margin-bottom: 15px;
+    }
+
+    .input {
+      background-color: #e9e9f1;
+      border: none;
+      padding: 12px 15px;
+      margin: 8px 0;
+      width: 100%;
+    }
+  </style>
+  <body>
+    <div class="top-section">
+      <div class="container">
+        <div class="header">
+          <div id="menu_bar" class="menu-bar">
+            <span class="top-left"></span>
+            <span class="middel"></span>
+            <span class="bottom-right"></span>
+          </div>
+          <div id="updates" class="updates">
+            <h1>LOGO</h1>
+          </div>
+        </div>
+
+        <!-- menu bar link -->
+        <nav id="nav" class="nav">
+          <ul dir="">
+            <li>
+              <i class="ph ph-notepad"></i>
+              <a href="MedicalRecords.aspx?q1=<%= _displayUser %>">Records</a>
+            </li>
+
+            <li>
+              <i class="ph ph-users-three"></i>
+              <a href="Profiles.aspx?q1=<%= _displayUser %>">Profiles</a>
+            </li>
+
+            <li>
+              <i class="ph ph-sign-out"></i>
+              <a
+                class="logout-link"
+                onclick="return confirm('Are you sure you want to sign out?')"
+                href="SignOut.aspx"
+                >Sign out</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <!-- end of menu bar link -->
+      </div>
+    </div>
+    <!-- end of top section -->
+
+    <!-- main section -->
+    <div id="main_section" class="main-section">
+      <div class="layer"></div>
+
+      <!-- card section -->
+      <div class="card-section">
+        <!-- sign in -->
+        <form id="frmSignIn" runat="server" onsubmit="return validateSignIn()">
+          <div class="container">
+            <h1>Sign In</h1>
+
+            <div class="form-group">
+              <asp:input
+                id="txtUsername"
+                runat="server"
+                CssClass="input"
+                placeholder="Email"
+              >
+              </asp:input>
+              <span class="error" id="errorUsername"
+                >Username is required.</span
+              >
+            </div>
+
+            <div class="form-group">
+              <asp:input
+                id="txtPassword"
+                runat="server"
+                TextMode="Password"
+                CssClass="input"
+                placeholder="Password"
+              >
+              </asp:input>
+              <span class="error" id="errorPassword"
+                >Password is required.</span
+              >
+            </div>
+
+            <div class="form-group">
+              <asp:Button
+                ID="btnSignIn"
+                runat="server"
+                Text="Sign In"
+                CssClass="signin-btn"
+                OnClick="btnSignIn_Click"
+              />
+            </div>
+
+            <a href="SignUp.aspx" class="link">
+              Don't have an account? Sign up here
+            </a>
+          </div>
+        </form>
+
+        <!-- ./sign in -->
+      </div>
+      <!-- end of card section -->
+    </div>
+    <!-- end of main section -->
+
+    <script>
+      var my_circles = "";
+      const menu_fistline = document.querySelector(
+        ".top-section .header .menu-bar .top-left"
+      );
+      const top_section = document.querySelector(".top-section");
+      const menu_secondline = document.querySelector(
+        ".top-section .header .menu-bar .middel"
+      );
+      const menu_thirdline = document.querySelector(
+        ".top-section .header .menu-bar .bottom-right"
+      );
+      const nav = document.getElementsByClassName("nav");
+      const main_section_layout = document.querySelector(
+        ".main-section .layer"
+      );
+
+      function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
+
+      menu_bar.addEventListener("click", () => {
+        topFunction();
+
+        // toggle menu bar links
+        if (my_circles.innerText != "Notifications") {
+          main_section.classList.toggle("translateY");
+          menu_fistline.classList.toggle("fist-line");
+          menu_secondline.classList.toggle("second-line");
+          menu_thirdline.classList.toggle("third-line");
+          my_circles.innerHTML = "My circles";
+
+          nav[0].classList.toggle("toggle-dispay");
+          main_section_layout.style.display = "block";
+          main_section_layout.classList.toggle("zindex1-toggle");
+        }
+
+        setTimeout(() => {
+          main_section.classList.toggle("zindex1-toggle");
+        }, 10);
+      });
+
+      function validateSignIn() {
+        let valid = true;
+
+        let username = document
+          .getElementById("<%= txtUsername.ClientID %>")
+          .value.trim();
+        let password = document
+          .getElementById("<%= txtPassword.ClientID %>")
+          .value.trim();
+
+        document.getElementById("errorUsername").style.display = username
+          ? "none"
+          : "block";
+        document.getElementById("errorPassword").style.display = password
+          ? "none"
+          : "block";
+
+        return username && password;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,479 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head runat="server">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profiles</title>
+    <script src="https://unpkg.com/phosphor-icons"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+/*general styling*/
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+h2,
+h3 {
+    color: rgb(41, 41, 41);
+    font-weight: 600;
+}
+i {
+    cursor: pointer;
+}
+p,
+span,
+small {
+    color: gray;
+    font-size: 15px;
+}
+
+.displayNone {
+    display: none;
+}
+
+.displayBlock {
+    display: block;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #d3d5e4;
+    text-transform: capitalize;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+
+/* nav links */
+.nav {
+    position: absolute;
+    padding: 17px;
+    width: 70%;
+    height: 60%;
+    margin-top: 10px;
+    display: none;
+    z-index: -1;
+}
+
+.toggle-dispay {
+    display: block;
+}
+
+.nav ul li {
+    list-style: none;
+    margin-bottom: 40px;
+}
+
+.nav ul .transparent a {
+    color: #a2a7ad;
+}
+
+.nav ul .transparent i {
+    color: #ff2323;
+}
+
+.nav ul li i {
+    margin-right: 20px;
+    color: #ff2323;
+    transform: translateY(5px);
+    font-size: 20px;
+}
+
+.nav ul a {
+    text-decoration: none;
+    color: rgb(37, 37, 37);
+    font-weight: 500;
+}
+
+.zindex-toggle {
+    z-index: 0;
+}
+
+.zindex1-toggle {
+    z-index: 10;
+}
+
+.zindex2-toggle {
+    z-index: 999;
+}
+
+/*top section*/
+.top-section {
+    background-color: #dee0eb;
+    background-color: #d3d5e4;
+    padding: 25px 0 16px 0;
+}
+
+.top-section {
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+}
+
+.top-section .header {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    height: 42px;
+    background-color: #dee0eb;
+    background-color: #d3d5e4;
+}
+
+.top-section .header .menu-bar {
+    width: 25px;
+    height: 27px;
+    position: relative;
+    cursor: pointer;
+}
+
+.top-section .header .menu-bar span {
+    border-radius: 5px;
+}
+
+.top-section .header .menu-bar .top-left {
+    width: 50%;
+    height: 3px;
+    background-color: #424242;
+    position: absolute;
+    transform-origin: left;
+    transition: transform 0.5s;
+}
+
+.fist-line {
+    transform: rotate(45deg) translateX(4px);
+}
+
+.second-line {
+    transform: rotate(-45deg);
+}
+
+.third-line {
+    transform: rotate(43deg) translateX(-5px);
+}
+
+.top-section .header .menu-bar .middel {
+    width: 100%;
+    height: 3px;
+    background-color: #424242;
+    position: absolute;
+    top: 45%;
+    transform-origin: center;
+    transition: transform 0.5s;
+}
+
+.top-section .header .menu-bar .bottom-right {
+    width: 50%;
+    height: 3px;
+    background-color: #424242;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform-origin: right;
+    transition: transform 0.5s;
+}
+
+.top-section .my-circles {
+    margin: 5px 0;
+}
+
+/* main section */
+.main-section {
+    background-color: #e9e9f1;
+    width: 100%;
+    height: 90vh;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    transform: translateY(90px);
+    z-index: 9999;
+}
+.translateY {
+    transform: translateY(620px);
+}
+/*card-section*/
+/* first-card-section*/
+.card-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+}
+
+@media (max-width: 360px) {
+    .card p {
+        font-size: 12px;
+        width: 100%;
+    }
+}
+
+@media (min-height: 940px) {
+    .main-section {
+        height: 80vh;
+        padding-bottom: 810px;
+    }
+
+}
+
+    .profile-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        max-width: 600px;
+        margin:  0 10px 0 10px;
+    }
+    
+    .profile-card {
+        background: #fff;
+        border: 1px solid #efe8e8;
+        border-radius: 8px;
+        padding: 15px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        /* box-shadow: 0px 0px 5px rgba(142, 11, 11, 0.05); */
+        box-shadow: 0px 0px 5px rgb(249, 243, 243);
+    }
+    
+    .profile-info {
+        flex: 1 1 60%;
+        font-size: 15px;
+        line-height: 1.5;
+    }
+    
+    .profile-actions {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        margin-top: 10px;
+        justify-content: space-between;
+    }
+    
+    .profile-actions .btn {
+        background-color: #ff2323;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 4px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 14px;
+        width: 100%;
+        line-height: 1px;
+    }
+
+    .profile-actions i {
+        color: white;
+       
+    }
+    
+    .profile-actions .btn:hover {
+        background-color: #ff6a6a;
+    }
+    
+    @media (max-width: 480px) {
+        .profile-card {
+            flex-direction: column;
+        }
+    
+        .profile-info,
+        .profile-actions {
+            flex: 1 1 100%;
+        }
+    
+        
+    }
+</style>
+  <body>
+    <div class="top-section">
+      <div class="container">
+        <div class="header">
+          <div id="menu_bar" class="menu-bar">
+            <span class="top-left"></span>
+            <span class="middel"></span>
+            <span class="bottom-right"></span>
+          </div>
+          <div id="updates" class="updates">
+            <h1>LOGO</h1>  
+          </div>
+        </div>
+    
+
+        <!-- menu bar link -->
+        <nav id="nav" class="nav">
+            <ul dir="">
+              <li>
+                <i class="ph ph-notepad"></i>
+                <a href="MedicalRecords.aspx?q1=<%= _displayUser %>">Records</a>
+              </li>
+  
+              <li>
+                <i class="ph ph-users-three"></i>
+                <a href="Profiles.aspx?q1=<%= _displayUser %>">Profiles</a>
+              </li>
+  
+              <li>
+                <i class="ph ph-sign-out"></i>
+                <a
+                  class="logout-link"
+                  onclick="return confirm('Are you sure you want to sign out?')"
+                  href="SignOut.aspx"
+                  >Sign out</a
+                >
+              </li>
+            </ul>
+          </nav>
+        <!-- end of menu bar link -->
+      </div>
+    </div>
+    <!-- end of top section -->
+
+    <!-- main section -->
+    <div id="main_section" class="main-section">
+      <div class="layer"></div>
+
+      <!-- card section -->
+      <div class="card-section">
+          <!-- first card -->
+          <form id="form1" runat="server">
+            <asp:Repeater ID="rptProfiles" runat="server">
+                <HeaderTemplate>
+                    <div class="profile-list">
+                </HeaderTemplate>
+            
+                <ItemTemplate>
+                    <div class="profile-card">
+                        <div class="profile-info">
+                            <strong><%# Eval("Name") %></strong><br />
+                            <span>Email:</span> <%# Eval("Email") %><br />
+                            <span>Phone:</span> <%# Eval("Phone") %><br />
+                            <span>Date:</span> <%# Eval("DateCreated", "{0:yyyy-MM-dd HH:mm}") %>
+                            <span><a href='Profile.aspx?q1=<%# Eval("Id") %>' class='btn'>View more</a> </span> 
+                            
+
+                        </div>
+                        <div class="profile-actions">
+                            <a href='MedicalRecords.aspx?q1=<%# Eval("Id") %>' class='btn'>
+                   <i class="fa fa-list fa-thin"></i>
+                   View Records</a>
+                            <a href='MedicalRecord.aspx?q2=<%# Eval("Id") %>' class='btn'>
+                   <i class="fa fa fa-plus fa-thin"></i>
+                   Add Record</a>
+                        </div>
+                    </div>
+                </ItemTemplate>
+            
+                <FooterTemplate>
+                    </div>
+                </FooterTemplate>
+            </asp:Repeater>
+    
+            <asp:Label ID="lblMsg" runat="server"></asp:Label>
+
+        </form>
+          <!-- end of first card -->
+      </div>
+      <!-- end of card section -->
+    </div>
+    <!-- end of main section -->
+
+
+    <script>
+        var my_circles = "";
+const menu_fistline = document.querySelector(
+  ".top-section .header .menu-bar .top-left"
+);
+const top_section = document.querySelector(".top-section");
+const menu_secondline = document.querySelector(
+  ".top-section .header .menu-bar .middel"
+);
+const menu_thirdline = document.querySelector(
+  ".top-section .header .menu-bar .bottom-right"
+);
+const nav = document.getElementsByClassName("nav");
+const main_section_layout = document.querySelector(".main-section .layer");
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+menu_bar.addEventListener("click", () => {
+  topFunction();
+
+  // toggle menu bar links
+  if (my_circles.innerText != "Notifications") {
+    main_section.classList.toggle("translateY");
+    menu_fistline.classList.toggle("fist-line");
+    menu_secondline.classList.toggle("second-line");
+    menu_thirdline.classList.toggle("third-line");
+    my_circles.innerHTML = "My circles";
+
+    nav[0].classList.toggle("toggle-dispay");
+    main_section_layout.style.display = "block";
+    main_section_layout.classList.toggle("zindex1-toggle");
+  }
+
+  setTimeout(() => {
+    main_section.classList.toggle("zindex1-toggle");
+  }, 10);
+});
+
+
+function validateForm() {
+            let valid = true;
+
+            function showError(id, condition) {
+                document.getElementById(id).style.display = condition ? "none" : "block";
+                return condition;
+            }
+
+            valid &= showError("errorAccountName", document.getElementById("<%= txtAccountName.ClientID %>").value.trim() !== "");
+            valid &= showError("errorUsername", document.getElementById("<%= txtUsername.ClientID %>").value.trim() !== "");
+            valid &= showError("errorPassword", document.getElementById("<%= txtPassword.ClientID %>").value.trim().length >= 6);
+            valid &= showError("errorEmail", /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById("<%= txtEmail.ClientID %>").value));
+            valid &= showError("errorPhone", /^[0-9]+$/.test(document.getElementById("<%= txtPhone.ClientID %>").value.trim()));
+
+            return valid;
+        }
+        
+        function previewImage(input) {
+            var imgPreview = document.getElementById("imagePreview");
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    imgPreview.src = e.target.result;
+                    imgPreview.style.display = "block";
+                };
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                imgPreview.style.display = "none";
+            }
+        }
+    </script>
+  </body>
+</html>
+
+
