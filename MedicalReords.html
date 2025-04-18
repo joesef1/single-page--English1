@@ -262,21 +262,18 @@
 
     a {
       color: #333;
-      font-size: 14px;
+      font-size: 12px;
       text-decoration: none;
-      margin: 15px 0;
     }
 
     button {
-      border-radius: 20px;
+      border-radius: 5px;
       border: 1px solid #ff4b2b;
       background-color: #ff4b2b;
-      color: #ffffff;
+      color: #ffffff !important;
       font-size: 12px;
-      font-weight: bold;
-      padding: 12px 45px;
+      padding: 5px 10px;
       letter-spacing: 1px;
-      text-transform: uppercase;
       transition: transform 80ms ease-in;
     }
     .error {
@@ -303,10 +300,10 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      padding: 0 20px 20px 20px;
+      padding: 0 15px 0px 15px;
       width: 100%;
       border-radius: 8px;
-      margin: 12px;
+      /* margin: 0px; */
     }
 
     form h1 {
@@ -426,13 +423,23 @@
 
     .record-card a {
       display: inline-block;
-      margin-top: 10px;
-      color: #007bff;
+      color: #fff;
       text-decoration: none;
     }
 
     .record-card a:hover {
-      text-decoration: underline;
+      /* text-decoration: underline; */
+    }
+
+    .view-more-btn-wrapper {
+      display: flex;
+      justify-content: end;
+      margin-top: 5px;
+    }
+
+    .view-more-btn {
+      display: flex;
+      justify-content: end;
     }
 
     @media (max-width: 480px) {
@@ -525,7 +532,11 @@
                 <span class="value">{{DateCreated}}</span>
                 <!-- Format server-side or with JS -->
               </div>
-              <a href="MedicalRecord.aspx?q1={{Id}}">📄 View More</a>
+              <div class="view-more-btn-wrapper">
+                <button type="submit" class="view-more-btn">
+                  <a href="MedicalRecord.aspx?q1={{Id}}">View More</a>
+                </button>
+              </div>
             </div>
             <!-- End Repeat -->
           </div>
