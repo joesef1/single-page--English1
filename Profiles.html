@@ -359,40 +359,53 @@ body {
           <!-- first card -->
           <form id="form1" runat="server">
             <asp:Repeater ID="rptProfiles" runat="server">
-                <HeaderTemplate>
-                    <div class="profile-list">
-                </HeaderTemplate>
-            
-                <ItemTemplate>
-                    <div class="profile-card">
-                        <div class="profile-info">
-                            <strong><%# Eval("Name") %></strong><br />
-                            <span>Email:</span> <%# Eval("Email") %><br />
-                            <span>Phone:</span> <%# Eval("Phone") %><br />
-                            <span>Date:</span> <%# Eval("DateCreated", "{0:yyyy-MM-dd HH:mm}") %>
-                            <span><a href='Profile.aspx?q1=<%# Eval("Id") %>' class='btn'>View more</a> </span> 
-                            
-
-                        </div>
-                        <div class="profile-actions">
-                            <a href='MedicalRecords.aspx?q1=<%# Eval("Id") %>' class='btn'>
-                   <i class="fa fa-list fa-thin"></i>
-                   View Records</a>
-                            <a href='MedicalRecord.aspx?q2=<%# Eval("Id") %>' class='btn'>
-                   <i class="fa fa fa-plus fa-thin"></i>
-                   Add Record</a>
-                        </div>
-                    </div>
-                </ItemTemplate>
-            
-                <FooterTemplate>
-                    </div>
-                </FooterTemplate>
+              <HeaderTemplate>
+                <div class="profile-list">
+              </HeaderTemplate>
+          
+              <ItemTemplate>
+                <div class="profile-card">
+                  <div class="profile-info">
+                    <strong><%# Eval("Name") %></strong><br />
+                    <span>Email:</span> <%# Eval("Email") %><br />
+                    <span>Phone:</span> <%# Eval("Phone") %><br />
+                    <span>Date:</span>
+                    <%# Eval("DateCreated", "{0:yyyy-MM-dd HH:mm}") %><br />
+                    <a
+                      href='Profile.aspx?q1=<%# Eval("Id") %>'
+                      class="btn link-btn"
+                    >
+                      View Profile
+                    </a>
+                  </div>
+          
+                  <div class="profile-actions">
+                    <a
+                      href='MedicalRecords.aspx?q1=<%# Eval("Id") %>'
+                      class="btn icon-btn"
+                      title="View Records"
+                    >
+                      <i class="fa fa-list"></i> View Records
+                    </a>
+          
+                    <a
+                      href='MedicalRecord.aspx?q2=<%# Eval("Id") %>'
+                      class="btn icon-btn"
+                      title="Add Record"
+                    >
+                      <i class="fa fa-plus"></i> Add Record
+                    </a>
+                  </div>
+                </div>
+              </ItemTemplate>
+          
+              <FooterTemplate>
+                </div>
+              </FooterTemplate>
             </asp:Repeater>
-    
-            <asp:Label ID="lblMsg" runat="server"></asp:Label>
-
-        </form>
+          
+            <asp:Label ID="lblMsg" runat="server" CssClass="message-label"></asp:Label>
+          </form>
           <!-- end of first card -->
       </div>
       <!-- end of card section -->
