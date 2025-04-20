@@ -446,126 +446,126 @@ Inherits="ClinicApp.Pages.SignUp" %>
 
         <div class="form-container sign-up-container">
           <form id="frmSignUp" runat="server" onsubmit="return validateForm()">
-            <h2>Sign Up</h2>
+            <div class="container">
+              <h2>Sign Up</h2>
 
-            <!-- Centered Image Preview -->
-            <img
-              id="imagePreview"
-              class="image-preview"
-              src="#"
-              alt="Profile Image Preview"
-            />
+              <!-- Centered Image Preview -->
+              <img
+                id="imagePreview"
+                class="image-preview"
+                src="#"
+                alt="Profile Image Preview"
+              />
 
-            <div class="form-group">
-              <asp:input
-                id="txtAccountName"
-                runat="server"
-                CssClass="input"
-                placeholder="Account Name"
-              >
-              </asp:input>
-              <span class="error" id="errorAccountName"
-                >Account Name is Required</span
-              >
-            </div>
+              <div class="form-group">
+                <asp:TextBox
+                  ID="txtAccountName"
+                  runat="server"
+                  CssClass="input"
+                  placeholder="Account Name"
+                ></asp:TextBox>
+                <span class="error" id="errorAccountName"
+                  >Account Name is Required</span
+                >
+              </div>
 
-            <div class="form-group">
-              <asp:DropDownList
-                ID="ddlIdentityType"
-                runat="server"
-                CssClass="input"
-              >
-                <asp:ListItem
-                  Text="Select Identity Type"
-                  Value=""
-                  Enabled="true"
-                  Selected="True"
+              <div class="form-group">
+                <asp:DropDownList
+                  ID="ddlIdentityType"
+                  runat="server"
+                  CssClass="input"
+                >
+                  <asp:ListItem
+                    Text="Select Identity Type"
+                    Value=""
+                    Enabled="true"
+                    Selected="True"
+                  />
+                  <asp:ListItem Text="User" Value="User" />
+                  <asp:ListItem Text="Organization" Value="Organization" />
+                </asp:DropDownList>
+              </div>
+
+              <div class="form-group">
+                <asp:TextBox
+                  ID="txtUsername"
+                  runat="server"
+                  CssClass="input"
+                  placeholder="User Name"
+                ></asp:TextBox>
+                <span class="error" id="errorUsername"
+                  >User name is Required</span
+                >
+              </div>
+
+              <div class="form-group">
+                <asp:TextBox
+                  ID="txtPassword"
+                  runat="server"
+                  TextMode="Password"
+                  CssClass="input"
+                  placeholder="Password"
+                ></asp:TextBox>
+                <span class="error" id="errorPassword"
+                  >Password should be at least 6 characters</span
+                >
+              </div>
+
+              <div class="form-group">
+                <asp:TextBox
+                  ID="txtEmail"
+                  runat="server"
+                  CssClass="input"
+                  placeholder="Email"
+                ></asp:TextBox>
+                <span class="error" id="errorEmail">Enter a valid email</span>
+              </div>
+
+              <div class="form-group">
+                <asp:TextBox
+                  ID="txtPhone"
+                  runat="server"
+                  CssClass="input"
+                  placeholder="Phone"
+                ></asp:TextBox>
+                <span class="error" id="errorPhone"
+                  >Enter a valid phone number</span
+                >
+              </div>
+
+              <div class="form-group">
+                <asp:TextBox
+                  ID="txtBio"
+                  runat="server"
+                  TextMode="MultiLine"
+                  CssClass="textbox"
+                  placeholder="bio"
+                ></asp:TextBox>
+              </div>
+
+              <div class="form-group">
+                <label>Profile Image:</label>
+                <asp:FileUpload
+                  ID="fileUploadProfileImage"
+                  runat="server"
+                  onchange="previewImage(this)"
                 />
-                <asp:ListItem Text="User" Value="User" />
-                <asp:ListItem Text="Organization" Value="Organization" />
-              </asp:DropDownList>
-            </div>
+              </div>
 
-            <div class="form-group">
-              <asp:Input
-                ID="txtUsername"
-                runat="server"
-                CssClass="input"
-                placeholder="User Name"
-              ></asp:Input>
-              <span class="error" id="errorUsername"
-                >User name is Required</span
+              <div class="form-group">
+                <asp:Button
+                  ID="btnSignUp"
+                  runat="server"
+                  Text="Sign Up"
+                  CssClass="signUp-btn"
+                  OnClick="btnSignUp_Click"
+                />
+              </div>
+
+              <a href="SignIn.aspx" class="link"
+                >Already have an account? Sign in here</a
               >
             </div>
-
-            <div class="form-group">
-              <asp:Input
-                ID="txtPassword"
-                runat="server"
-                TextMode="Password"
-                CssClass="input"
-                placeholder="Password"
-              ></asp:Input>
-              <span class="error" id="errorPassword"
-                >Password should be at least 6 characters</span
-              >
-            </div>
-
-            <div class="form-group">
-              <asp:Input
-                ID="txtEmail"
-                runat="server"
-                CssClass="input"
-                placeholder="Email"
-              ></asp:Input>
-              <span class="error" id="errorEmail">Enter a valid email</span>
-            </div>
-
-            <div class="form-group">
-              <asp:Input
-                ID="txtPhone"
-                runat="server"
-                CssClass="input"
-                placeholder="Phone"
-              ></asp:Input>
-              <span class="error" id="errorPhone"
-                >Enter a valid phone number</span
-              >
-            </div>
-
-            <div class="form-group">
-              <asp:Textbox
-                ID="txtBio"
-                runat="server"
-                TextMode="MultiLine"
-                CssClass="textbox"
-                placeholder="bio "
-              ></asp:Textbox>
-            </div>
-
-            <div class="form-group">
-              <label>Profile Image:</label>
-              <asp:FileUpload
-                ID="fileUploadProfileImage"
-                runat="server"
-                onchange="previewImage(this)"
-              />
-            </div>
-
-            <div class="form-group">
-              <asp:Button
-                ID="btnSignUp"
-                runat="server"
-                Text="Sign Up"
-                CssClass="signUp-btn"
-                OnClick="btnSignUp_Click"
-              />
-            </div>
-
-            <!-- Sign In Link -->
-            <a href="SignIn.aspx" class="link"
-              >Already have an account? Sign in here</a
-            >
           </form>
         </div>
 
