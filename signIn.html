@@ -385,86 +385,48 @@ Inherits="ClinicApp.Pages.SignIn" %>
       <!-- card section -->
       <div class="card-section">
         <!-- sign in -->
-        <form id="frmMedicalRecords" runat="server">
-          <div class="top-section">
-            <div class="container">
-              <div class="header">
-                <div id="menu_bar" class="menu-bar">
-                  <span class="top-left"></span>
-                  <span class="middel"></span>
-                  <span class="bottom-right"></span>
-                </div>
-                <div id="updates" class="updates">
-                  <h1>LOGO</h1>
-                </div>
-              </div>
+        <form id="frmSignIn" runat="server" onsubmit="return validateSignIn()">
+          <div class="container">
+            <h1>Sign In</h1>
 
-              <nav id="nav" class="nav">
-                <ul>
-                  <li>
-                    <i class="ph ph-notepad"></i>
-                    <a href="MedicalRecords.aspx?q1=<%= _displayUser %>"
-                      >Records</a
-                    >
-                  </li>
-                  <li>
-                    <i class="ph ph-users-three"></i>
-                    <a href="Profiles.aspx?q1=<%= _displayUser %>">Profiles</a>
-                  </li>
-                  <li>
-                    <i class="ph ph-sign-out"></i>
-                    <a
-                      class="logout-link"
-                      onclick="return confirm('Are you sure you want to sign out?')"
-                      href="SignOut.aspx"
-                      >Sign out</a
-                    >
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-
-          <div id="main_section" class="main-section">
-            <div class="layer"></div>
-
-            <div class="card-section">
-              <!-- Display if no data -->
-              <asp:Label
-                ID="lblNoData"
+            <div class="form-group">
+              <asp:TextBox
+                ID="txtUsername"
                 runat="server"
-                Text="No records associated with this patient."
-                CssClass="text-danger"
-                Visible="false"
-                Style="text-align:center; display:block; margin-bottom:20px; font-weight:bold;"
+                CssClass="input"
+                placeholder="Email"
               />
-
-              <!-- Records list -->
-              <asp:Repeater ID="rptRecords" runat="server">
-                <ItemTemplate>
-                  <div class="record-card">
-                    <div>
-                      <span class="label">Patient:</span>
-                      <span class="value"><%# Eval("PatientName") %></span>
-                    </div>
-                    <div>
-                      <span class="label">Organization:</span>
-                      <span class="value"><%# Eval("OrganizationName") %></span>
-                    </div>
-                    <div>
-                      <span class="label">Created:</span>
-                      <span class="value"
-                        ><%# Eval("DateCreated", "{0:yyyy-MM-dd HH:mm}")
-                        %></span
-                      >
-                    </div>
-                    <a href='MedicalRecord.aspx?q1=<%# Eval("Id") %>'
-                      >📄 View Record</a
-                    >
-                  </div>
-                </ItemTemplate>
-              </asp:Repeater>
+              <span class="error" id="errorUsername"
+                >Username is required.</span
+              >
             </div>
+
+            <div class="form-group">
+              <asp:TextBox
+                ID="txtPassword"
+                runat="server"
+                TextMode="Password"
+                CssClass="input"
+                placeholder="Password"
+              />
+              <span class="error" id="errorPassword"
+                >Password is required.</span
+              >
+            </div>
+
+            <div class="form-group">
+              <asp:Button
+                ID="btnSignIn"
+                runat="server"
+                Text="Sign In"
+                CssClass="signin-btn"
+                OnClick="btnSignIn_Click"
+              />
+            </div>
+
+            <a href="SignUp.aspx" class="link">
+              Don't have an account? Sign up here
+            </a>
           </div>
         </form>
 
