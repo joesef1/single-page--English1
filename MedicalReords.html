@@ -519,7 +519,7 @@ Async="true" %>
               <ItemTemplate>
                 <div class="record-card">
                   <div>
-                    <span class="label">Patient name:</span>
+                    <span class="label">Patient Name:</span>
                     <span class="value"><%# Eval("PatientName") %></span>
                   </div>
                   <div>
@@ -527,10 +527,10 @@ Async="true" %>
                     <span class="value"><%# Eval("OrganizationName") %></span>
                   </div>
                   <div>
-                    <span class="label">Created at:</span>
-                    <span class="value"
-                      ><%# Eval("DateCreated", "{0:yyyy-MM-dd HH:mm}") %></span
-                    >
+                    <span class="label">Created At:</span>
+                    <span class="value">
+                      <%# Eval("DateCreated", "{0:yyyy-MM-dd HH:mm}") %>
+                    </span>
                   </div>
                   <div class="view-more-btn-wrapper">
                     <a
