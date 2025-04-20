@@ -476,32 +476,7 @@ Inherits="ClinicApp.Pages.Profile" Async="true" %>
                 runat="server"
                 onchange="previewProfileImage(this)"
               />
-              <%--<input
-                type="file"
-                id="fileUploadProfile"
-                runat="server"
-                onchange="previewProfileImage(this)"
-              />--%>
             </div>
-
-            <%--
-            <div class="profile-image-container">
-              <img
-                id="profilePreview"
-                class="profile-image"
-                src="default-avatar.png"
-              />
-            </div>
-
-            <div class="form-group">
-              <label>Upload New Profile Image:</label>
-              <asp:FileUpload
-                ID="fileUploadProfile"
-                runat="server"
-                onchange="previewProfileImage(this)"
-              />
-            </div>
-            --%>
 
             <div class="form-group">
               <label>Account Name:</label>
@@ -554,6 +529,23 @@ Inherits="ClinicApp.Pages.Profile" Async="true" %>
             />
 
             <asp:Label ID="lblMsg" runat="server"></asp:Label>
+
+            <!-- Bottom Navbar -->
+            <div class="navbar">
+              <a href="MedicalRecords.aspx?q1=<%= _displayUser %>" class="link">
+                <i class="fas fa-notes-medical"></i> Records
+              </a>
+              <a href="Profiles.aspx?q1=<%= _displayUser %>" class="link">
+                <i class="fas fa-users"></i> Profiles
+              </a>
+              <a
+                href="SignOut.aspx"
+                class="logout-link"
+                onclick="return confirm('Are you sure you want to sign out?')"
+              >
+                <i class="fas fa-sign-out-alt"></i>
+              </a>
+            </div>
           </div>
         </form>
       </div>
